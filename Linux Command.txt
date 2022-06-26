@@ -1,0 +1,16 @@
+Time and Date Information
+
+timedatectl
+sudo timedatectl set-time hh:mm:ss
+sudo timedatectl set-time 00:00:00
+How to Enable/Disable NTP
+sudo timedatectl set-ntp false
+sudo timedatectl set-ntp true
+
+How to Set the Date on Linux
+sudo timedatectl set-date YYYY-MM-DD
+sudo timedatectl set-time "2000-01-01 23:00:01"
+timedatectl list-timezones
+timedatectl set-timezone Africa/Blantyre
+**************************************
+

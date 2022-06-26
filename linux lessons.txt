@@ -1,0 +1,341 @@
+
+tty == tele type terminal 
+F1- for GUI
+F2-F1x CLI Ternimal
+
+--
+root userid = 0
+after that userid = 1000
+0< userid <1000 system users or serivce user 
+
+----------------
+give dummy user for serices 
+ for run the serivce
+------
+the file that save all users will exist in \etc\passwd
+there is all alot of users 
+**********************
+FSH File system Hierarchy 
+
+home-->
+main partition is called /  -- root only one
+inside it there are folders like home etc dev tmp var 
+the folder that contain users is called home 
+instead of users in windows 
+
+
+etc --> Direcoty to save all device configrations
+and every serivce has its  Configration file or folder 
+
+dev --> 
+rule 1 : everything is a file in linux like mouse parttion harddisk
+Kernel Access to Hardware By dev folder 
+
+tmp --> temp file  for streaming video 
+as  example 
+after reboot is over 
+clean up serivce is pass over tmp to clean up it
+
+special usr --> user 
+
+for shared files between all users 
+
+backgrouns for all users 
+ theme of linux are shared files 
+
+
+bin--> binaries folder for save all command like pwd and ls and su that translate to bianary
+
+sbin--> super binaries folder for 
+binaries folder for save all command like pwd and ls and su that translate to bianary
+for only Super user 
+administrative command
+
+var --> variable files  important
+ every logout or login  save in log file
+files that change periodically 
+ like mails and mysql 
+
+root -->
+home direcoty for root is in the root folder 
+isolate the root with its files 
+
+we can give permssion for all users
+ 
+proc-->  information for hardware and software 
+get all informations for the machine the kernal must know 
+ervery thing in this machine insdie folder Cpuinfo
+Kernal deal with service will be save in proc 
+when you reboot will be deleted 
+sys--> same as proc but for hardware
+
+opt --> folder emtpy that wil be vendros 
+like to have separated folder like Oracle
+
+srv --> for server 
+
+3 roots 
+1-root user
+2-root folder 
+3- / root file system like c virtual point for files
+
+*************commands*************************
+ 
+ls  / 
+
+
+
+
+srv -->folder emtpy that will install serivce in future 
+
+media  --> for Assign usb or removable devices CDs
+ device you can acces it in this fodler 
+ (mounting Process) 
+mnt--> In days of floppy disk 
+
+boot --> folder for kernal and bootloader that can boot kernel 
+
+*************command****************
+
+ls /home/moh  
+
+you can put / in end of folder not file 
+
+words with White color is file 
+words with Bule color is diecortory
+words with green color is execuatable file
+
+rules 2 in linux file name is  Case sernsitve 
+
+absolute Path : full path
+relative Path : 
+. Current working directory
+.. Parent  working directory
+
+****************************
+cat -- concatenate command --> to browse  content of txt file 
+ls -- list  command list file inside directory 
+pwd  __command persent working directory -- command  show your location as directory 
+dir  __comand -- same as ls without coloring
+cd -  __ command  to return to perivous directory you was working it before
+cd /   _command chage diectory command for move between files and folders 
+cd    _command go to home  Diectory  for yours 
+cd ~  _command go to home Diectory for yours cd ~ = cd but 
+you can goes to home of another user like cd ~moh whivch 
+will goes to home Diectory of moh
+touch <namefile>  __command to create empty txt file 
+tree __command to list file in tree shape 
+mkdir __command make directory 
+cp __command copy  file 
+cp -r __command copy Directory recursive  will overwrite if exist 
+mv __command move the file or directory 
+rm __command remove file 
+rmdir __command remove directory 
+rm -rf __command remove directory inside files 
+ls -a __ command  show all files include hidden in linux start with . dot
+ls -r __command show files arranged reverse alphaptical order 
+ls -R __command show files recersive 
+file <nameof file> __command give you the signature of file metadata
+logout 
+exit
+clear ctrl + l
+reboot 
+shudown -r now
+systemctl reboot
+shutdown -r now 
+shudtown  now 
+poweroff 
+poweroff -r 
+less __command for paginate files content q to quit 
+more __command same less but it quit when finish 
+
+
+****************
+
+shape of command 
+command  [option] [arguments]
+[]--> optional choice 
+rm [-r] [file1,file2] 
+
+
+****************
+shorcut Important 
+ctrl + a  to move cursor in the begining of line 
+ctrl + e  to move cursor in the end of line
+ctrl + k  to move cursor in the cut of line to end of line
+ctrl + u  to move cursor in the cut of line to begining of line
+ctrl + d to logout 
+ctrl + s to lock on scressn 
+ctrl + q unlock for scressn 
+**********************
+EXECUTE TWO COMMAND in smae line 
+ls;date
+***********************************************************
+Users and groups 
+ userid for root =0
+bydefault when you create user 
+automatially group with same name are created
+user can has many group 
+but user has only one primary group it only for this user
+
+useradd <name> __commmand to create user
+id <username>
+uid=1001 gid=1001(moh) groups=1001(moh)
+uid userid 
+gid main group groupid 
+groups = other groups for user
+---------
+g== for primary group 
+G== for secondary Group 
+
+add primary
+groupadd <nameofGroup>  for adding gruops 
+
+add group primary for new user 
+useradd -g <nameofPrimaryGroup> <nameOfUser>
+
+add group secondary for user 
+usermod -G <nameofSecondaryGroup> <nameOfUser>
+
+-G romove any secondary group and add new  secondary group 
+to avoid this add -a 
+
+usermod -a -G <nameofSecondaryGroup> <nameOfUser>
+
+usermod -g <nameofPrimaryGroup> <nameOfUser>
+-----------------------------------------------------
+file /etc/user what is contain ?
+user1:x:1001:1001::/home/user1:/bin/bash
+username :password hashed:userid : primary id :description: home directory path: shell diectory path
+/etc/passwd  password 
+/etc/shadow
+
+file /etc/group  what is contain ?
+dbagroup:x:1006::user1
+groupname:groupPassword hashed : group admin:list of user as memeber 
+/etc/passwd  password 
+/etc/shadow
+! in linux means not set password
+
+remove user with his primay group  but its file exist 
+userdel <nameofUser> 
+ in this case use command 
+rm -rf /home/user1 
+userdel -r user1
+
+remove primay group for more than users it will not be deleted 
+but secondary group for more than users it will be deleted without any problem
+primary Group is very important !!
+
+groupdel <nameOfGroup>
+
+when you create user without  password  the user will not login
+user active has right to make operation on system 
+user deactive has not right to make operation on system 
+
+******************************************************
+
+file permission:
+user that user 3 type: 
+owner of file (user own the file )==> o
+group ==>g
+other ==>o
+
+operation on file 3 type for file or directory :
+read ==>r can make ls      ----------------->4
+write ==>w  can make read or write ---------->2 
+execute ==>x van make cd or ls -l ----------->1
+
+file type last bit which contain many type :
+-  =normal file 
+d  =directory 
+b  =block device like harddisk
+c  =charcter device keyboard
+l  =link file 
+--------------------------------
+filetype | User | Group | Other	|
+------------------------------------
+-        |wrx   |rwx    |wrx    | .|
+------------------------------------
+
+. means that selinux protect this file 
+--------------example-------------------------------
+-rw-r--r-- 1 moh  moh    807 May 21 20:12 .profile
+-rw-r--r-- 1 moh  moh      0 May 21 20:25 .sudo_as_admin_successful
+drwxr-xr-x 1 moh  moh    512 Jun  3 17:06 test
+drwxr-xr-x. 1  moh  moh    512 Jun  3 17:28 test2
+-------------------------------------------------------------
+example 
+1 moh  moh    807 May 21 20:12 .profile
+example details 
+permission   |-rw-r--r--. 
+1            |no of shorts of this file or link count
+moh          | owner
+moh          | group 
+807          |  size of file 
+May 21 20:12 | date of last access
+.profile     | name of filel
+
+ 
+------------------
+change add permission
+chmod  -R  <u,g,o>+<wrx> <fileName>
+change revoke permission
+chmod -R <u,g,o>-<wrx> <fileName>
+
+-R  for apply permission on files and folder inside the folder 
+
+to change the owner of file
+chown <username> <filename>  
+
+to change the grpup of file
+chown  -R :<groupName> <filename>
+chown  -R  :dbagroup file1 
+
+to change the owner and grpup of file both
+chown  -R  <owner>:<groupName> <filename>
+
+to give permssion as number 
+777 for full permission 
+
+chown -R 765  <filename>  
+chown -R 000  <filename> remove all premissions
+
+*******************Redirection****************************
+after exection command the result will be saved in file 
+like 
+ls 1>result take result into result file 
+ls 2>result take result of error into result file 
+ls 1> result 2>error
+
+-- in above it  make override on the file but the solution use
+>> instead of one 
+
+ls 1>>result.txt take result into result file 
+ls 2>>result.txt take result of error into result file 
+ls 1>> result.txt 2>>error.txt
+
+ls 2&>> result .txt put the reusult and error in same file
+
+we use 
+cat <<EOT>> result.txt  EOT this can be change in your choice 
+cat <file.txt> result.txt copy the content of file.txt to result.txt
+cat <<file.txt>> result.txt append the content of file.txt to result.txt
+
+
+************pipe | **************
+take the output of one command to be input for another command
+
+ls -Rl / | less 
+ls |tee -a result.txt
+
+********************************
+>> w _command
+ 00:24:05 up 0 min,  0 users,  load average: 0.52, 0.58, 0.59
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+>>who _command 
+>> whatis <command>
+>>  whereis <command>
+>> last --------------important command details for everything
+>> lastlog --------------important command details for everything
+
