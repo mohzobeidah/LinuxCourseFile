@@ -328,9 +328,11 @@ take the output of one command to be input for another command
 
 ls -Rl / | less 
 ls |tee -a result.txt
+tee make override on the file 
+tee -a make append on data exist in file before 
 
-********************************
->> w _command
+*******************checking Who is loggin   secutiry check*************
+>> w _command  who is making loggin and how many users is logging 
  00:24:05 up 0 min,  0 users,  load average: 0.52, 0.58, 0.59
 USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
 >>who _command 
@@ -338,4 +340,83 @@ USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
 >>  whereis <command>
 >> last --------------important command details for everything
 >> lastlog --------------important command details for everything
+
+*****************************************************************************************************************************************
+pts 
+:0 :1 :2 :3
+how many mointer connected
+gdm and gripgical user interface 
+******************************** Disk managment ***************************************************************************************
+
+MBR ==> master boot recod ==>> piece in font of disk it is necssary 512 byte
+ this is map of disk partiation 
+it consist of 3  
+- partition table spify the beging of patition and its end 64 byte 
+every partition must know the file system that inside it 
+every partition has 14 byte 
+- file system : orginse the store and retrive data like Fat ntfs ext2 and ext3 and xfs and ext4 btrfs 
+Fat32 file must not be bigger than 4 G not suppert like ecryption and compression 
+ntfs file not be bigger than 250 T  
+-inode table for evey partition  ==> blocks in patition 
+block number that store file AND OWENER AND PREMSSION and metadata for this file 
+
+format prepare the disk for new data
+what is the diffences between file and directory ?
+folder is spiecal file is pionting to anothe files 
+
+
+entry of file ---> file inode number , premmision access time and type and owner and modification time and length count 
+entry of directory ---> file inode number , premmision access time and  type and owner and modification time and length count and pointer of files which contian 
+
+to know th inode int linux 
+ls -li the __command show f  number wil appear is the inode number 
+df __command disk free space 
+
+give you the following
+file system  | blocks |  used | avaible | use%  | mount on
+df -h    __command disk free space for human readble 
+df -i __command disk free space  and give a inode number
+
+*****************************************************************************
+soft link  shortcut refrence point two to refrence not inode 
+hard link same inode refered by two refrence 
+
+
+
+touch text1
+nano text1
+
+to make hard link 
+>> ln file1 file2 __command 
+two file will point two same i node when delte one the other will be still exist with same data
+>> ls make soft link 
+ln -s  file1 file2  __command 
+when you use the soft link you must use absolute path 
+
+
+|----|-------|---------|--------|-------|----------------------------------------------------------------------------
+|mbr |part1  | part 2  |part 3  | part4-|-> part logical partition 5| part logical partition  6|.... logical partition 
+|____|_______|_________|________|_______|____extends________________________________________________________________
+
+part 123 primary + extended 
+disk type 
+IDE PATA
+SATA 
+SCSI 
+SAS
+SSD
+USB FLASH
+
+>>lsblk __command show partiton in hard disk ls block
+
+>>fdisk -l list of partitions 
+>>fdisk /dev/sdb  __conmmand new disk   you must follow command to make new partition 
+>>partprobe __ command to rescan any chnages un MBR or partition or disks 
+>> mkfs.ext4 /dev/sdb1  __commmand to make file system for partiton  linux ext2 or ext3 or ext4
+
+
+
+
+
+
 
