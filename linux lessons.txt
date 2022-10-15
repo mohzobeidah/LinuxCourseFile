@@ -413,6 +413,57 @@ USB FLASH
 >>fdisk /dev/sdb  __conmmand new disk   you must follow command to make new partition 
 >>partprobe __ command to rescan any chnages un MBR or partition or disks 
 >> mkfs.ext4 /dev/sdb1  __commmand to make file system for partiton  linux ext2 or ext3 or ext4
+>> mount dev/sdb1 /media __this mount this partition in media folder in root of systemfiles you should create the folder before 
+>>umount /media __ this remove the mount and this folder return to folder in root file system 
+>> du -h <file or folder name> __ this give size o file or folder 
+
+>>dd of=<filename> if=<filename> bs=<block size > count=<number of block> __ this write data from file to file
+
+
+
+*************************** compression and arciveing***********************************************************************************
+>>gzip <file> __ comand for compress file 
+>>gunzip <file.gz> __ comand for  decompress file.gz
+other tool
+>>bzip2 <file> __ comand for compress file 
+>>bunzip2 <file.bz2> __ comand for  decompress file.bz2
+>> time bunzip2 <file.bz2> _ give you time of process for all commands
+// this is for archiving folder
+>> tar cf <NewfolderName.tar> <folderName>
+// to dearchiving  the folder
+>> tar xf <NewfolderName.tar>
+
+
+compression and arciveing both
+
+// this is for archiving folder
+>> tar cvfz <NewfolderName.tar.gz> <folderName>
+// to dearchiving  the folder
+>> tar xvfz <NewfolderName.tar.gz>
+
+
+
+
+
+***************************************process in liunx*******************************************************************************************
+
+>> ps __comad show current process 
+>>ps a
+>>ps aux |less 
+
+>> kill -<15  is default mecey kill ,9 hard kill> <processId>
+>>kill -l __ command  kist 	all option
+>>pstree 
+>> psgrep <get pecess by name>
+>> firefox & __ make prcoess background 
+>> jobs __ get all background prcoess 
+>>fg %<numberOfjob>  return the process to be frontground 
+
+>>top ---------------> this command is important 
+
+
+
+
 
 
 
